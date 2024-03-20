@@ -1,7 +1,76 @@
+-- TODO: A TEST
+-- FIX: 
+-- ERROR:
+-- BUG:
+-- WARN: TEST 
+-- WARNING: TEST
+-- XXX: DEATH
+-- NOTE: NOTE 
+-- INFO: HAHAH
+-- TEST: HAHAHHA
+-- TESTING: 
+-- PASSED: 
+-- FAILED: 
+-- HELP:
+-- ERROR: THIS IS AN ERROR
+-- BUG: This is a BUG
+
+
 return {
     "folke/todo-comments.nvim",
+    event = 'VimEnter',
     dependencies = { "nvim-lua/plenary.nvim" },
-    keys = {
-        {"<leader>ts", "<cmd>TodoTelescope<CR>"}
+    opts ={
+        signs = true, -- show icons in the signs column
+        sign_priority = 8, -- sign priority
+        -- keywords recognized as todo comments
+        keywords = {
+            FIX = {
+                icon = "🛠", -- icon used for the sign, and in search results
+                color = "#66B3FF", -- can be a hex color, or a named color (see below)
+                alt = { "FIXME", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+                -- signs = false, -- configure signs for some keywords individually
+            },
+            TODO = { icon = "🎧", color = "#2563EB" },
+            WARN = { icon = "🚧", color = "#FF9933", alt = { "WARNING", "XXX" } },
+            NOTE = { icon = "🧾", color = "#d0ffd4",  alt = { "INFO" } },
+            TEST = { icon = "🔬", color = "#10B981", alt = { "TESTING", "PASSED", "FAILED" } },
+            HELP = { icon = "🚑", color = "#FFD700", alt = { "AAA" } },
+            ERROR = { icon = "🌋", color = "#FF0000", alt = { "BUG" } },
+        },
+        gui_style = {
+            fg = "NONE", -- The gui style to use for the fg highlight group.
+            bg = "BOLD", -- The gui style to use for the bg highlight group.
+        },
+        merge_keywords = false, -- when true, custom keywords will be merged with the defaults
+        -- highlighting of the line containing the todo comment
+        -- * before: highlights before the keyword (typically comment characters)
+        -- * keyword: highlights of the keyword
+        -- * after: highlights after the keyword (todo text)
+        highlight = {
+            multiline = true, -- enable multine todo comments
+            multiline_pattern = "^.", -- lua pattern to match the next multiline from the start of the matched keyword
+            multiline_context = 10, -- extra lines that will be re-evaluated when changing a line
+            before = "", -- "fg" or "bg" or empty
+            keyword = "wide", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
+            after = "fg", -- "fg" or "bg" or empty
+            pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlighting (vim regex)
+            comments_only = true, -- uses treesitter to match keywords in comments only
+            max_line_len = 400, -- ignore lines longer than this
+            exclude = {}, -- list of file types to exclude highlighting
+        },
+        -- list of named colors where we try to extract the guifg from the
+        -- list of highlight groups or use the hex color if hl not found as a fallback
+        search = {
+            command = "rg",
+            args = {
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+            },
+            pattern = [[\b(KEYWORDS):]], 
+        },
     }
 }
