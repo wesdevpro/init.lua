@@ -4,8 +4,7 @@ return {
 		-- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 		{ import = "wesdevpro.plugins" }
 	},
-	-- defaults = {
-		
+	-- defaults = {		
 	--- },
 	checker = { enabled = true },
 }

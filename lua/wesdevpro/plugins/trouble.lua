@@ -21,14 +21,14 @@ return {
                 })
             end
         },
-    { 
-        "<leader>tp",
-        function()
-            require("trouble").previous({
-                skip_groups = true,
-                jump = true
-            })
-        end
+        {
+            "<leader>tp",
+            function()
+                require("trouble").previous({
+                    skip_groups = true,
+                    jump = true
+                })
+            end
+        }
     }
-}
 }
