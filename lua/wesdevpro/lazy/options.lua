@@ -1,5 +1,9 @@
 vim.g.mapleader = " "
 
+vim.opt.fileformats = "dos,unix"
+
+vim.opt.mouse = ""
+
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
