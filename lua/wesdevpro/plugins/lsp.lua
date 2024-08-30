@@ -27,25 +27,28 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
-                "gopls",
+                "csharp_ls",
+                "astro",
+                "clangd",
+                "tsserver",
+                "volar",
+                "marksman"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
                 end,
-
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
+                                runtime = { version = "Lua 5.1" },
                                 diagnostics = {
-                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
+                                    globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
                                 }
                             }
                         }
@@ -71,13 +74,13 @@ return {
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
-            }, {
+            },
+            {
                 { name = 'buffer' },
             })
         })
 
         vim.diagnostic.config({
-            -- update_in_insert = true,
             float = {
                 focusable = false,
                 style = "minimal",
