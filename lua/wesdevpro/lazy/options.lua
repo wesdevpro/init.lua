@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.opt.fileformats = "dos,unix"
+vim.opt.fileformats = "dos"
 
 vim.opt.mouse = ""
 

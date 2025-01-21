@@ -12,6 +12,8 @@
 -- PASSED: 
 -- FAILED: 
 -- HELP:
+-- TASK:
+-- STEP:
 -- ERROR: THIS IS AN ERROR
 -- BUG: This is a BUG
 
@@ -35,7 +37,7 @@ return {
             WARN = { icon = "", color = "#FF9933", alt = { "WARNING", "XXX" } },
             NOTE = { icon = "", color = "#d0ffd4",  alt = { "INFO" } },
             TEST = { icon = "", color = "#10B981", alt = { "TESTING", "PASSED", "FAILED" } },
-            HELP = { icon = "", color = "#FFD700", alt = { "AAA" } },
+            HELP = { icon = "", color = "#FFD700", alt = { "AAA", "TASK", "STEP" } },
             ERROR = { icon = "", color = "#FF0000", alt = { "BUG" } },
         },
         gui_style = {

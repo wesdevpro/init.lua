@@ -30,7 +30,7 @@ return {
                 "csharp_ls",
                 "astro",
                 "clangd",
-                "tsserver",
+                "ts_ls",
                 "volar",
                 "marksman"
             },
