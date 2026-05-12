@@ -5,10 +5,10 @@ return {
     config = function()
         require("claude-code").setup({
             window = {
-                position = "vertical",
+                position = "botright vertical",
                 split_ratio = 0.45,
-                enter_insert = true,
-            },
+                enter_insert = true
+            }
         })
     end
 }
