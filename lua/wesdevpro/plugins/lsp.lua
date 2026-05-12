@@ -31,7 +31,7 @@ return {
                 "astro",
                 "clangd",
                 "ts_ls",
-                "volar",
+                "vue_ls",
                 "marksman"
             },
             handlers = {
